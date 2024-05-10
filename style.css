@@ -1,0 +1,146 @@
+/* The CSS variable is used in code but there is value is not initialized so i initialized the values */
+:root {
+  --third-color: #000;
+  --blue-color: blue;
+  --fourth-color: #a89bce;
+}
+
+/* Menu styling */
+.menu-container {
+  width: 1152px;
+  max-width: 90%;
+  margin: 0 auto;
+}
+.nav-wrapper {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+.nav-wrapper ul.nav-list {
+  list-style-type: none;
+  display: flex;
+  align-items: center;
+  gap: 16px;
+}
+.nav-wrapper ul.nav-list li {
+  margin-left: 30px;
+  padding: 20px 0;
+  position: relative;
+}
+.nav-wrapper ul.nav-list li a {
+  color: var(--third-color);
+  text-decoration: none;
+  letter-spacing: 1px;
+  transition: all 0.5s ease-in-out;
+}
+.nav-wrapper ul.nav-list li a:hover,
+.nav-wrapper ul.nav-list li.active a {
+  color: var(--blue-color);
+}
+nav ul.dropdown-list {
+  list-style-type: none;
+  display: block;
+  background: whitesmoke;
+  padding: 6px 16px;
+  position: absolute;
+  width: max-content;
+  z-index: 9999;
+  left: 50%;
+  transform: translateX(-50%);
+  opacity: 0;
+  pointer-events: none;
+}
+.nav-wrapper ul.dropdown-list li {
+  margin-left: 0;
+  padding: 5px 0;
+}
+.nav-wrapper ul.dropdown-list li a {
+  color: var(--third-color);
+}
+
+.nav-wrapper ul.nav-list li:hover .dropdown-list {
+  opacity: 1;
+  pointer-events: auto;
+  /* animation is declared but never used so i removed it. */
+}
+.nav-wrapper .nav-list li .btn a {
+  color: var(--fourth-color);
+}
+.nav-wrapper .nav-list li .btn:hover a {
+  color: var(--third-color);
+}
+/* Responsive menu */
+.mobile .hamberger {
+  display: flex;
+  flex-direction: column;
+  padding: 20px 0;
+  cursor: pointer;
+  gap: 8px;
+}
+.mobile .hamberger span {
+  background: var(--third-color);
+  width: 28px;
+  height: 2px;
+}
+.mobile {
+  position: relative;
+  height: 100vh;
+}
+
+/* In this the pointer-events is assigned to none value that prevent any pointer event on element. So i remove because i want to add hover effect on list items */
+.mobile ul.nav-list {
+  background: -webkit-linear-gradient(45deg, #f5f6fa, #dcdde1);
+  background: linear-gradient(45deg, #f5f6fa, #dcdde1);
+  position: absolute;
+  left: 0;
+  right: 0;
+  top: 60px;
+  bottom: 0;
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+  padding-top: 80px;
+  opacity: 0;
+  overflow-y: auto;
+  transition: all 0.3s ease-in-out;
+}
+.mobile .nav-wrapper ul li {
+  text-align: center;
+}
+.mobile ul.dropdown-list {
+  position: relative;
+  background: transparent;
+  text-align: center;
+  height: 0;
+  overflow-y: hidden;
+  transition: opacity 0.3s ease-in-out;
+  padding-top: 0;
+}
+
+.mobile .nav-wrapper ul li:hover {
+  color: #a89bce !important;
+  cursor: pointer;
+}
+.mobile .nav-wrapper ul .special:hover .dropdown-list {
+  height: max-content;
+  padding-top: 6px;
+  opacity: 1 !important;
+}
+.mobile .nav-wrapper ul.dropdown-list li a {
+  color: #7f8fa6;
+}
+.mobile .nav-wrapper ul.dropdown-list li a:hover {
+  color: var(--third-color);
+}
+
+/* The (open) class is use in Javascript for handling the opening the navbar for mobile but there is no styling for open class --> so i added this style */
+.open {
+  opacity: 1 !important;
+}
+
+/* This media query is used to make the hamburger menu icon visible on the web page */
+@media screen and (max-width: 880px) {
+  .hamberger {
+    display: flex !important;
+  }
+}
